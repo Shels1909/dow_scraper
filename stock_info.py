@@ -1,7 +1,8 @@
 import urllib2
 from bs4 import BeautifulSoup
-
-def main(stock):
+import threading
+file_lock = threading.Lock()
+def main(stock, f):
     quote_page = 'https://www.bloomberg.com/quote/' + stock 
     page = urllib2.urlopen(quote_page)
 
@@ -21,12 +22,9 @@ def main(stock):
     change_percent_box = soup.find('span', attrs={'class': 'changePercent__2d7dc0d2'});
     change_percent = change_percent_box.text.strip()
 
-
-    print "Name: " + name
-    print "Current Price: " + current_price
-    print "Change Absolute: " + change_absolute
-    print "Change Percent: " + change_percent
-
+    file_lock.acquire();
+    f.write(name + ',' + current_price + ',' + change_absolute + ',' + change_percent + '\n')
+    file_lock.release()
 
 if __name__ == "__main__":
     main()
