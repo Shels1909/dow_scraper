@@ -2,8 +2,10 @@ import urllib2
 from bs4 import BeautifulSoup
 import threading
 file_lock = threading.Lock()
-def main(stock, f):
-    quote_page = 'https://www.bloomberg.com/quote/' + stock 
+
+def main(ticker, f):
+
+    quote_page = 'https://www.bloomberg.com/quote/' + ticker
     page = urllib2.urlopen(quote_page)
 
     soup = BeautifulSoup(page, 'html.parser')
@@ -23,7 +25,7 @@ def main(stock, f):
     change_percent = change_percent_box.text.strip()
 
     file_lock.acquire();
-    f.write(name + ',' + current_price + ',' + change_absolute + ',' + change_percent + '\n')
+    f.write(name + ',' + ticker + ',' + current_price + ',' + change_absolute + ',' + change_percent + '\n')
     file_lock.release()
 
 if __name__ == "__main__":
