@@ -7,4 +7,4 @@ This script requires Python 2.7. You will also need Beautiful Soup 4, an HTML pa
 
 ---
 
- If you execute the *dow.py* file in your command line with no arguments, the program will fetch adn create a csv file with all 30 Dow Jones Companies including their name, ticker, price, change, and percent change. If you execute the command with a ticker as an argument, for example `./dow.py AAPL:US`, it will grab more detailed information about the company and its stock.  
+ If you execute the *dow.py* file in your command line with no arguments, the program will fetch and create a csv file with all 30 Dow Jones Companies including their name, ticker, price, change, and percent change. If you execute the command with a ticker as an argument, for example `./dow.py AAPL:US`, it will grab more detailed information about the company and its stock.  
