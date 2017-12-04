@@ -109,5 +109,6 @@ def get_ticker_info(ticker):
     print "Prev Close Price: " + close_prev + "\n"
     print "Volume: " + volume + "\n"
     print "Market Cap: " + market_cap + "\n"
+
 if __name__ == "__main__":
     main()
